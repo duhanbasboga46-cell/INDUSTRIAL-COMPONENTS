@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endüstriyel Komponent Gezgini</title>
+    <meta name="description" content="Endüstriyel sektör, makine ve komponent gezgini - Sektörlere göre makineleri ve komponentleri keşfedin.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           CSS DESIGN SYSTEM
+           ======================================== */
+        :root {
+            /* Primary Palette - Industrial Navy */
+            --navy-900: #0a1628;
+            --navy-800: #0f2140;
+            --navy-700: #142c54;
+            --navy-600: #1a3a6c;
+            --navy-500: #1e4d8f;
+            --navy-400: #2563a8;
+            --navy-300: #4a8fd4;
+
+            /* Neutral Palette */
+            --gray-50: #f8f9fb;
+            --gray-100: #f0f2f5;
+            --gray-200: #e2e5ea;
+            --gray-300: #c8cdd5;
+            --gray-400: #9aa1ae;
+            --gray-500: #6b7385;
+            --gray-600: #4a5264;
+            --gray-700: #353c4e;
+            --gray-800: #232938;
+            --gray-900: #141824;
+
+            /* Accent */
+            --accent-blue: #3b82f6;
+            --accent-blue-light: #60a5fa;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(10, 22, 40, 0.04);
+            --shadow-md: 0 4px 12px rgba(10, 22, 40, 0.08);
+            --shadow-lg: 0 8px 30px rgba(10, 22, 40, 0.12);
+            --shadow-xl: 0 16px 48px rgba(10, 22, 40, 0.16);
+            --shadow-card-hover: 0 12px 36px rgba(10, 22, 40, 0.14);
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+        .header {
+            background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(10, 22, 40, 0.3);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--navy-400) 100%);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+        }
+
+        .logo-text span {
+            font-size: 12px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+        }
+
+        .header-badge .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-emerald);
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        /* ========================================
+           BREADCRUMB
+           ======================================== */
+        .breadcrumb-bar {
+            padding: 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 48px;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.45);
+            cursor: default;
+            transition: color var(--transition-fast);
+        }
+
+        .breadcrumb-item.clickable {
+            cursor: pointer;
+        }
+
+        .breadcrumb-item.clickable:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .breadcrumb-item.active {
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 600;
+        }
+
+        .breadcrumb-separator {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 11px;
+            user-select: none;
+        }
+
+        .breadcrumb-icon {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* ========================================
+           MAIN CONTENT
+           ======================================== */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px 80px;
+        }
+
+        /* ========================================
+           SCREEN HEADER
+           ======================================== */
+        .screen-header {
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: fadeSlideIn 0.5s ease forwards;
+        }
+
+        .screen-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--navy-900);
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .screen-header p {
+            font-size: 15px;
+            color: var(--gray-500);
+            font-weight: 400;
+        }
+
+        .screen-header .count-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            padding: 6px 14px;
+            background: var(--navy-900);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 100px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ========================================
+           CARD GRID
+           ======================================== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           SECTOR & MACHINE CARDS
+           ======================================== */
+        .card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+            padding: 28px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--navy-600), var(--accent-blue));
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .card:hover {
+            border-color: var(--navy-300);
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:active {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .card-icon.sector {
+            background: linear-gradient(135deg, rgba(26, 58, 108, 0.08) 0%, rgba(37, 99, 168, 0.08) 100%);
+        }
+
+        .card-icon.machine {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(96, 165, 250, 0.08) 100%);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy-900);
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            color: var(--gray-500);
+            font-weight: 400;
+        }
+
+        .card-arrow {
+            position: absolute;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-50%) translateX(-4px);
+            font-size: 18px;
+            color: var(--gray-300);
+            transition: all var(--transition-normal);
+        }
+
+        .card:hover .card-arrow {
+            transform: translateY(-50%) translateX(0);
+            color: var(--navy-500);
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .card-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        .card-meta-item .meta-icon {
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        /* ========================================
+           COMPONENT LIST
+           ======================================== */
+        .component-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .component-item {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all var(--transition-normal);
+            opacity: 0;
+            transform: translateX(-16px);
+        }
+
+        .component-item:hover {
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-md);
+            transform: translateX(0);
+        }
+
+        .component-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--navy-900);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .component-info {
+            flex: 1;
+        }
+
+        .component-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy-900);
+            letter-spacing: -0.1px;
+        }
+
+        .component-type {
+            font-size: 12px;
+            color: var(--gray-400);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .component-badge {
+            padding: 4px 12px;
+            background: rgba(16, 185, 129, 0.08);
+            color: var(--accent-emerald);
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 100px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        /* ========================================
+           BACK BUTTON (Mobile)
+           ======================================== */
+        .back-btn-mobile {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--navy-900);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all var(--transition-fast);
+        }
+
+        .back-btn-mobile:hover {
+            background: var(--navy-700);
+        }
+
+        @media (max-width: 640px) {
+            .back-btn-mobile {
+                display: inline-flex;
+            }
+        }
+
+        /* ========================================
+           EMPTY STATE
+           ======================================== */
+        .empty-state {
+            text-align: center;
+            padding: 80px 24px;
+            color: var(--gray-400);
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .empty-state h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-size: 14px;
+        }
+
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeSlideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeSlideIn 0.4s ease forwards;
+        }
+
+        .animate-in-left {
+            animation: fadeSlideInLeft 0.4s ease forwards;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 40px;
+            text-align: center;
+        }
+
+        .footer-line {
+            height: 1px;
+            background: var(--gray-200);
+            margin-bottom: 24px;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            .header-top {
+                padding: 16px 0;
+            }
+
+            .header-badge {
+                display: none;
+            }
+
+            .logo-text h1 {
+                font-size: 16px;
+            }
+
+            .main {
+                padding: 24px 16px 60px;
+            }
+
+            .screen-header h2 {
+                font-size: 22px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .card-title {
+                font-size: 16px;
+            }
+
+            .component-item {
+                padding: 16px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-inner {
+                padding: 0 16px;
+            }
+
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+            }
+
+            .screen-header h2 {
+                font-size: 20px;
+            }
+
+            .card-grid {
+                gap: 14px;
+            }
+        }
+
+        /* ========================================
+           SCREEN TRANSITIONS
+           ======================================== */
+        .screen-transition-enter {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        .screen-transition-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body>
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+    <header class="header" id="app-header">
+        <div class="header-inner">
+            <div class="header-top">
+                <div class="logo-section">
+                    <div class="logo-icon">⚙️</div>
+                    <div class="logo-text">
+                        <h1>Endüstriyel Komponent Gezgini</h1>
+                        <span>Sektör · Makine · Komponent</span>
+                    </div>
+                </div>
+                <div class="header-badge">
+                    <span class="dot"></span>
+                    Sistem Aktif
+                </div>
+            </div>
+            <nav class="breadcrumb-bar" id="breadcrumb"></nav>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
+    <main class="main" id="app-content">
+        <!-- Content rendered by JavaScript -->
+    </main>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer class="footer">
+        <div class="footer-line"></div>
+        <p>Endüstriyel Komponent Gezgini &copy; 2026 — Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- ==========================================
+         APPLICATION LOGIC
+         ========================================== -->
+    <script>
+        // ============================================
+        // VERİ SETİ (DATA)
+        // Yeni sektör, makine ve komponent eklemek için
+        // bu objeyi düzenlemeniz yeterlidir.
+        // ============================================
+        const DATA = [
+            {
+                id: "maden",
+                name: "Maden Sektörü",
+                icon: "⛏️",
+                description: "Maden çıkarma ve işleme ekipmanları",
+                machines: [
+                    {
+                        id: "konveyor",
+                        name: "Konveyör",
+                        icon: "🏭",
+                        description: "Malzeme taşıma ve iletim sistemi",
+                        components: [
+                            { name: "Redüktör", type: "Güç İletim" },
+                            { name: "Elektrik Motoru", type: "Tahrik Sistemi" },
+                            { name: "Termal Switch", type: "Koruma Elemanı" },
+                            { name: "Şase", type: "Yapısal Eleman" },
+                            { name: "Aksiyel Fan Soğutma", type: "Soğutma Sistemi" },
+                            { name: "PT 100", type: "Sensör" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "enerji",
+                name: "Enerji Sektörü",
+                icon: "⚡",
+                description: "Enerji üretim ve dağıtım sistemleri",
+                machines: [
+                    {
+                        id: "turbin",
+                        name: "Buhar Türbini",
+                        icon: "🔄",
+                        description: "Elektrik üretim türbini",
+                        components: [
+                            { name: "Rotor", type: "Döner Eleman" },
+                            { name: "Stator", type: "Sabit Eleman" },
+                            { name: "Yataklar (Bearings)", type: "Destek Elemanı" },
+                            { name: "Conta Sistemi", type: "Sızdırmazlık" },
+                            { name: "Kontrol Valfi", type: "Kontrol Elemanı" }
+                        ]
+                    },
+                    {
+                        id: "jenerator",
+                        name: "Jeneratör",
+                        icon: "🔌",
+                        description: "Elektrik üretim jeneratörü",
+                        components: [
+                            { name: "Alternatör", type: "Elektrik Üretim" },
+                            { name: "AVR (Voltaj Regülatörü)", type: "Kontrol" },
+                            { name: "Soğutma Fanı", type: "Soğutma Sistemi" },
+                            { name: "Yakıt Pompası", type: "Yakıt Sistemi" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "gida",
+                name: "Gıda Sektörü",
+                icon: "🏗️",
+                description: "Gıda üretim ve paketleme hatları",
+                machines: [
+                    {
+                        id: "dolum",
+                        name: "Dolum Makinesi",
+                        icon: "🥤",
+                        description: "Sıvı ve katı ürün dolum sistemi",
+                        components: [
+                            { name: "Servo Motor", type: "Tahrik Sistemi" },
+                            { name: "PLC Kontrol Ünitesi", type: "Otomasyon" },
+                            { name: "Pnömatik Silindir", type: "Hareket Elemanı" },
+                            { name: "Dolum Nozülü", type: "Proses Elemanı" },
+                            { name: "Loadcell (Tartım)", type: "Sensör" }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // ============================================
+        // UYGULAMA DURUMU (STATE)
+        // ============================================
+        const state = {
+            currentView: "sectors",       // "sectors" | "machines" | "components"
+            selectedSector: null,
+            selectedMachine: null
+        };
+
+        // ============================================
+        // DOM REFERANSLARI
+        // ============================================
+        const contentEl = document.getElementById("app-content");
+        const breadcrumbEl = document.getElementById("breadcrumb");
+
+        // ============================================
+        // BREADCRUMB OLUŞTURMA
+        // ============================================
+        function renderBreadcrumb() {
+            let html = '';
+
+            // Ana sayfa (Sektörler)
+            const isHome = state.currentView === "sectors";
+            html += `
+                <div class="breadcrumb-item ${!isHome ? 'clickable' : 'active'}" 
+                     ${!isHome ? 'onclick="navigateTo(\'sectors\')"' : ''}>
+                    <span class="breadcrumb-icon">🏠</span>
+                    Sektörler
+                </div>
+            `;
+
+            // Sektör adı
+            if (state.selectedSector) {
+                const sector = DATA.find(s => s.id === state.selectedSector);
+                if (sector) {
+                    const isMachineView = state.currentView === "machines";
+                    html += `<span class="breadcrumb-separator">›</span>`;
+                    html += `
+                        <div class="breadcrumb-item ${state.currentView === 'components' ? 'clickable' : 'active'}"
+                             ${state.currentView === 'components' ? `onclick="navigateTo('machines', '${sector.id}')"` : ''}>
+                            ${sector.name}
+                        </div>
+                    `;
+                }
+            }
+
+            // Makine adı
+            if (state.selectedMachine && state.selectedSector) {
+                const sector = DATA.find(s => s.id === state.selectedSector);
+                if (sector) {
+                    const machine = sector.machines.find(m => m.id === state.selectedMachine);
+                    if (machine) {
+                        html += `<span class="breadcrumb-separator">›</span>`;
+                        html += `
+                            <div class="breadcrumb-item active">
+                                ${machine.name}
+                            </div>
+                        `;
+                    }
+                }
+            }
+
+            breadcrumbEl.innerHTML = html;
+        }
+
+        // ============================================
+        // ANIMASYON YARDIMCILARI
+        // ============================================
+        function animateCards(selector) {
+            const items = document.querySelectorAll(selector);
+            items.forEach((item, index) => {
+                item.style.animationDelay = `${index * 80 + 100}ms`;
+                item.classList.add('animate-in');
+            });
+        }
+
+        function animateComponents(selector) {
+            const items = document.querySelectorAll(selector);
+            items.forEach((item, index) => {
+                item.style.animationDelay = `${index * 60 + 100}ms`;
+                item.classList.add('animate-in-left');
+            });
+        }
+
+        // ============================================
+        // EKRAN 1: SEKTÖRLER
+        // ============================================
+        function renderSectors() {
+            const totalMachines = DATA.reduce((acc, s) => acc + s.machines.length, 0);
+            const totalComponents = DATA.reduce((acc, s) => 
+                acc + s.machines.reduce((a, m) => a + m.components.length, 0), 0);
+
+            let html = `
+                <div class="screen-header">
+                    <h2>Endüstriyel Sektörler</h2>
+                    <p>Bir sektör seçerek makineleri ve komponentleri keşfedin</p>
+                    <div class="count-badge">
+                        📊 ${DATA.length} Sektör · ${totalMachines} Makine · ${totalComponents} Komponent
+                    </div>
+                </div>
+                <div class="card-grid">
+            `;
+
+            DATA.forEach(sector => {
+                const machineCount = sector.machines.length;
+                const componentCount = sector.machines.reduce((a, m) => a + m.components.length, 0);
+
+                html += `
+                    <div class="card" onclick="navigateTo('machines', '${sector.id}')">
+                        <div class="card-icon sector">${sector.icon}</div>
+                        <div class="card-title">${sector.name}</div>
+                        <div class="card-subtitle">${sector.description}</div>
+                        <div class="card-meta">
+                            <div class="card-meta-item">
+                                <span class="meta-icon">🔧</span>
+                                ${machineCount} Makine
+                            </div>
+                            <div class="card-meta-item">
+                                <span class="meta-icon">📦</span>
+                                ${componentCount} Komponent
+                            </div>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            contentEl.innerHTML = html;
+
+            requestAnimationFrame(() => animateCards('.card'));
+        }
+
+        // ============================================
+        // EKRAN 2: MAKİNELER
+        // ============================================
+        function renderMachines(sectorId) {
+            const sector = DATA.find(s => s.id === sectorId);
+
+            if (!sector) {
+                contentEl.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <h3>Sektör bulunamadı</h3>
+                        <p>Lütfen geçerli bir sektör seçin.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <button class="back-btn-mobile" onclick="navigateTo('sectors')">
+                    ← Sektörlere Dön
+                </button>
+                <div class="screen-header">
+                    <h2>${sector.icon} ${sector.name}</h2>
+                    <p>${sector.description}</p>
+                    <div class="count-badge">
+                        🔧 ${sector.machines.length} Makine
+                    </div>
+                </div>
+                <div class="card-grid">
+            `;
+
+            sector.machines.forEach(machine => {
+                html += `
+                    <div class="card" onclick="navigateTo('components', '${sectorId}', '${machine.id}')">
+                        <div class="card-icon machine">${machine.icon}</div>
+                        <div class="card-title">${machine.name}</div>
+                        <div class="card-subtitle">${machine.description}</div>
+                        <div class="card-meta">
+                            <div class="card-meta-item">
+                                <span class="meta-icon">📦</span>
+                                ${machine.components.length} Komponent
+                            </div>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            contentEl.innerHTML = html;
+
+            requestAnimationFrame(() => animateCards('.card'));
+        }
+
+        // ============================================
+        // EKRAN 3: KOMPONENTLER
+        // ============================================
+        function renderComponents(sectorId, machineId) {
+            const sector = DATA.find(s => s.id === sectorId);
+            if (!sector) return;
+
+            const machine = sector.machines.find(m => m.id === machineId);
+            if (!machine) return;
+
+            let html = `
+                <button class="back-btn-mobile" onclick="navigateTo('machines', '${sectorId}')">
+                    ← ${sector.name}'e Dön
+                </button>
+                <div class="screen-header">
+                    <h2>${machine.icon} ${machine.name}</h2>
+                    <p>${sector.name} — Komponent listesi</p>
+                    <div class="count-badge">
+                        📦 ${machine.components.length} Komponent
+                    </div>
+                </div>
+                <div class="component-list">
+            `;
+
+            machine.components.forEach((component, index) => {
+                html += `
+                    <div class="component-item">
+                        <div class="component-number">${String(index + 1).padStart(2, '0')}</div>
+                        <div class="component-info">
+                            <div class="component-name">${component.name}</div>
+                            <div class="component-type">${component.type}</div>
+                        </div>
+                        <div class="component-badge">Aktif</div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            contentEl.innerHTML = html;
+
+            requestAnimationFrame(() => animateComponents('.component-item'));
+        }
+
+        // ============================================
+        // NAVİGASYON
+        // ============================================
+        function navigateTo(view, sectorId, machineId) {
+            state.currentView = view;
+
+            switch (view) {
+                case "sectors":
+                    state.selectedSector = null;
+                    state.selectedMachine = null;
+                    renderBreadcrumb();
+                    renderSectors();
+                    break;
+
+                case "machines":
+                    state.selectedSector = sectorId;
+                    state.selectedMachine = null;
+                    renderBreadcrumb();
+                    renderMachines(sectorId);
+                    break;
+
+                case "components":
+                    state.selectedSector = sectorId;
+                    state.selectedMachine = machineId;
+                    renderBreadcrumb();
+                    renderComponents(sectorId, machineId);
+                    break;
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============================================
+        // KEYBOARD NAVİGASYON
+        // ============================================
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' || e.key === 'Backspace') {
+                if (state.currentView === 'components' && state.selectedSector) {
+                    navigateTo('machines', state.selectedSector);
+                } else if (state.currentView === 'machines') {
+                    navigateTo('sectors');
+                }
+            }
+        });
+
+        // ============================================
+        // UYGULAMAYI BAŞLAT
+        // ============================================
+        navigateTo("sectors");
+    </script>
+</body>
+</html>
