@@ -690,109 +690,132 @@
     <script>
         // ============================================
         // VERİ SETİ (DATA)
-        // Yeni sektör, makine ve komponent eklemek için
-        // bu objeyi düzenlemeniz yeterlidir.
+        // 4 Aşamalı Hiyerarşi:
+        //   Kategori → Sektör → Makine → Komponent
+        //
+        // "Sektörlerideki Standartlar" kategorisi
+        // sektör adımını atlayıp doğrudan makinelere gider.
         // ============================================
-        const DATA = [
-            {
-                id: "maden",
-                name: "Maden Sektörü",
-                icon: "⛏️",
-                description: "Maden çıkarma ve işleme ekipmanları",
-                machines: [
-                    {
-                        id: "konveyor",
-                        name: "Konveyör",
-                        icon: "🏭",
-                        description: "Malzeme taşıma ve iletim sistemi",
-                        components: [
-                            { name: "Redüktör", type: "Güç İletim" },
-                            { name: "Elektrik Motoru", type: "Tahrik Sistemi" },
-                            { name: "Termal Switch", type: "Koruma Elemanı" },
-                            { name: "Şase", type: "Yapısal Eleman" },
-                            { name: "Aksiyel Fan Soğutma", type: "Soğutma Sistemi" },
-                            { name: "PT 100", type: "Sensör" },
-                            { name: "Kaplin", type: "Güç İletim" }
-                        ]
-                    },
-                    {
-                        id: "Kırıcı",
-                        name: "Kırıcı",
-                        icon: "🏭",
-                        description: "Parçalara bölme",
-                        components: [
-                            { name: "Redüktör", type: "Güç İletim" },
-                            { name: "Elektrik Motoru", type: "Tahrik Sistemi" },
-                            { name: "Termal Switch", type: "Koruma Elemanı" },
-                            { name: "Şase", type: "Yapısal Eleman" },
-                            { name: "Aksiyel Fan Soğutma", type: "Soğutma Sistemi" },
-                            { name: "PT 100", type: "Sensör" },
-                            { name: "Kaplin", type: "Güç İletim" }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: "enerji",
-                name: "Enerji Sektörü",
-                icon: "⚡",
-                description: "Enerji üretim ve dağıtım sistemleri",
-                machines: [
-                    {
-                        id: "turbin",
-                        name: "Buhar Türbini",
-                        icon: "🔄",
-                        description: "Elektrik üretim türbini",
-                        components: [
-                            { name: "Rotor", type: "Döner Eleman" },
-                            { name: "Stator", type: "Sabit Eleman" },
-                            { name: "Yataklar (Bearings)", type: "Destek Elemanı" },
-                            { name: "Conta Sistemi", type: "Sızdırmazlık" },
-                            { name: "Kontrol Valfi", type: "Kontrol Elemanı" }
-                        ]
-                    },
-                    {
-                        id: "jenerator",
-                        name: "Jeneratör",
-                        icon: "🔌",
-                        description: "Elektrik üretim jeneratörü",
-                        components: [
-                            { name: "Alternatör", type: "Elektrik Üretim" },
-                            { name: "AVR (Voltaj Regülatörü)", type: "Kontrol" },
-                            { name: "Soğutma Fanı", type: "Soğutma Sistemi" },
-                            { name: "Yakıt Pompası", type: "Yakıt Sistemi" }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: "gida",
-                name: "Gıda Sektörü",
-                icon: "🏗️",
-                description: "Gıda üretim ve paketleme hatları",
-                machines: [
-                    {
-                        id: "dolum",
-                        name: "Dolum Makinesi",
-                        icon: "🥤",
-                        description: "Sıvı ve katı ürün dolum sistemi",
-                        components: [
-                            { name: "Servo Motor", type: "Tahrik Sistemi" },
-                            { name: "PLC Kontrol Ünitesi", type: "Otomasyon" },
-                            { name: "Pnömatik Silindir", type: "Hareket Elemanı" },
-                            { name: "Dolum Nozülü", type: "Proses Elemanı" },
-                            { name: "Loadcell (Tartım)", type: "Sensör" }
-                        ]
-                    }
-                ]
-            }
-        ];
+        const DATA = {
+            categories: [
+                {
+                    id: "sektorlere-has",
+                    name: "Sektörlere Has",
+                    icon: "🏭",
+                    description: "Sektöre özel makine ve komponentler",
+                    type: "with-sectors",
+                    sectors: [
+                        {
+                            id: "maden",
+                            name: "Maden Sektörü",
+                            icon: "⛏️",
+                            description: "Maden çıkarma ve işleme ekipmanları",
+                            machines: [
+                                {
+                                    id: "maden-konveyorleri",
+                                    name: "Maden Konveyörleri",
+                                    icon: "🏭",
+                                    description: "Malzeme taşıma ve iletim sistemi",
+                                    components: [
+                                        { name: "Bant", type: "Taşıma Elemanı" },
+                                        { name: "Redüktör", type: "Güç İletim" },
+                                        { name: "Termal Siviç", type: "Koruma Elemanı" },
+                                        { name: "Elektrik Motoru", type: "Tahrik Sistemi" },
+                                        { name: "Şase", type: "Yapısal Eleman" },
+                                        { name: "PT100", type: "Sensör" },
+                                        { name: "Aksiyal Fan", type: "Soğutma Sistemi" }
+                                    ]
+                                },
+                                {
+                                    id: "kirici",
+                                    name: "Kırıcı",
+                                    icon: "🔨",
+                                    description: "Parçalara bölme ve kırma sistemi",
+                                    components: [
+                                        { name: "Redüktör", type: "Güç İletim" },
+                                        { name: "Termal Siviç", type: "Koruma Elemanı" },
+                                        { name: "Elektrik Motoru", type: "Tahrik Sistemi" },
+                                        { name: "Şase", type: "Yapısal Eleman" },
+                                        { name: "PT100", type: "Sensör" },
+                                        { name: "Aksiyal Fan", type: "Soğutma Sistemi" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: "enerji",
+                            name: "Enerji Sektörü",
+                            icon: "⚡",
+                            description: "Enerji üretim ve dağıtım sistemleri",
+                            machines: [
+                                {
+                                    id: "buhar-turbini",
+                                    name: "Buhar Türbini",
+                                    icon: "🔄",
+                                    description: "Elektrik üretim türbini",
+                                    components: [
+                                        { name: "Rotor", type: "Döner Eleman" },
+                                        { name: "Stator", type: "Sabit Eleman" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: "cimento",
+                            name: "Çimento Sektörü",
+                            icon: "🧱",
+                            description: "Çimento üretim ve işleme tesisleri",
+                            machines: [
+                                {
+                                    id: "doner-firin",
+                                    name: "Döner Fırın",
+                                    icon: "🔥",
+                                    description: "Klinker üretim fırını",
+                                    components: [
+                                        { name: "Redüktör", type: "Güç İletim" },
+                                        { name: "Elektrik Motoru", type: "Tahrik Sistemi" },
+                                        { name: "Rulman", type: "Destek Elemanı" },
+                                        { name: "Refrakter Tuğla", type: "Isı Yalıtım" }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "standartlar",
+                    name: "Sektörlerdeki Standartlar",
+                    icon: "📐",
+                    description: "Tüm sektörlerde ortak kullanılan standart makineler",
+                    type: "direct-machines",
+                    machines: [
+                        {
+                            id: "konveyor",
+                            name: "Konveyör",
+                            icon: "🏭",
+                            description: "Standart konveyör sistemi",
+                            components: []
+                        },
+                        {
+                            id: "vinc",
+                            name: "Vinç",
+                            icon: "🏗️",
+                            description: "Yük kaldırma ve taşıma sistemi",
+                            components: []
+                        }
+                    ]
+                }
+            ]
+        };
 
         // ============================================
         // UYGULAMA DURUMU (STATE)
+        // 4 seviyeli navigasyon:
+        //   categories → sectors → machines → components
         // ============================================
         const state = {
-            currentView: "sectors",       // "sectors" | "machines" | "components"
+            currentView: "categories",
+            selectedCategory: null,
             selectedSector: null,
             selectedMachine: null
         };
@@ -804,49 +827,87 @@
         const breadcrumbEl = document.getElementById("breadcrumb");
 
         // ============================================
+        // YARDIMCI FONKSİYONLAR
+        // ============================================
+        function getCategory(catId) {
+            return DATA.categories.find(c => c.id === catId);
+        }
+
+        function getSector(catId, sectorId) {
+            const cat = getCategory(catId);
+            return cat && cat.sectors ? cat.sectors.find(s => s.id === sectorId) : null;
+        }
+
+        function getMachine(catId, sectorId, machineId) {
+            // "Sektörlere Has" → sektör altında makine
+            if (sectorId) {
+                const sector = getSector(catId, sectorId);
+                return sector ? sector.machines.find(m => m.id === machineId) : null;
+            }
+            // "Standartlar" → doğrudan kategori altında makine
+            const cat = getCategory(catId);
+            return cat && cat.machines ? cat.machines.find(m => m.id === machineId) : null;
+        }
+
+        // ============================================
         // BREADCRUMB OLUŞTURMA
         // ============================================
         function renderBreadcrumb() {
             let html = '';
+            const v = state.currentView;
 
-            // Ana sayfa (Sektörler)
-            const isHome = state.currentView === "sectors";
+            // 1) Ana Sayfa
+            const isHome = v === "categories";
             html += `
-                <div class="breadcrumb-item ${!isHome ? 'clickable' : 'active'}" 
-                     ${!isHome ? 'onclick="navigateTo(\'sectors\')"' : ''}>
+                <div class="breadcrumb-item ${!isHome ? 'clickable' : 'active'}"
+                     ${!isHome ? 'onclick="navigateTo(\'categories\')"' : ''}>
                     <span class="breadcrumb-icon">🏠</span>
-                    Sektörler
+                    Ana Sayfa
                 </div>
             `;
 
-            // Sektör adı
-            if (state.selectedSector) {
-                const sector = DATA.find(s => s.id === state.selectedSector);
-                if (sector) {
-                    const isMachineView = state.currentView === "machines";
+            // 2) Kategori adı
+            if (state.selectedCategory) {
+                const cat = getCategory(state.selectedCategory);
+                if (cat) {
+                    const isClickable = v !== "sectors" || cat.type === "direct-machines";
+                    const isActive = (v === "sectors" && cat.type === "with-sectors") ||
+                                     (v === "machines" && cat.type === "direct-machines" && !state.selectedSector);
                     html += `<span class="breadcrumb-separator">›</span>`;
                     html += `
-                        <div class="breadcrumb-item ${state.currentView === 'components' ? 'clickable' : 'active'}"
-                             ${state.currentView === 'components' ? `onclick="navigateTo('machines', '${sector.id}')"` : ''}>
+                        <div class="breadcrumb-item ${!isActive ? 'clickable' : 'active'}"
+                             ${!isActive ? `onclick="navigateTo('${cat.type === 'with-sectors' ? 'sectors' : 'machines'}', '${cat.id}')"` : ''}>
+                            ${cat.name}
+                        </div>
+                    `;
+                }
+            }
+
+            // 3) Sektör adı (sadece "Sektörlere Has" için)
+            if (state.selectedSector && state.selectedCategory) {
+                const sector = getSector(state.selectedCategory, state.selectedSector);
+                if (sector) {
+                    const isActive = v === "machines";
+                    html += `<span class="breadcrumb-separator">›</span>`;
+                    html += `
+                        <div class="breadcrumb-item ${!isActive ? 'clickable' : 'active'}"
+                             ${!isActive ? `onclick="navigateTo('machines', '${state.selectedCategory}', '${sector.id}')"` : ''}>
                             ${sector.name}
                         </div>
                     `;
                 }
             }
 
-            // Makine adı
-            if (state.selectedMachine && state.selectedSector) {
-                const sector = DATA.find(s => s.id === state.selectedSector);
-                if (sector) {
-                    const machine = sector.machines.find(m => m.id === state.selectedMachine);
-                    if (machine) {
-                        html += `<span class="breadcrumb-separator">›</span>`;
-                        html += `
-                            <div class="breadcrumb-item active">
-                                ${machine.name}
-                            </div>
-                        `;
-                    }
+            // 4) Makine adı
+            if (state.selectedMachine) {
+                const machine = getMachine(state.selectedCategory, state.selectedSector, state.selectedMachine);
+                if (machine) {
+                    html += `<span class="breadcrumb-separator">›</span>`;
+                    html += `
+                        <div class="breadcrumb-item active">
+                            ${machine.name}
+                        </div>
+                    `;
                 }
             }
 
@@ -873,30 +934,100 @@
         }
 
         // ============================================
-        // EKRAN 1: SEKTÖRLER
+        // EKRAN 1: KATEGORİLER (Ana Ekran)
         // ============================================
-        function renderSectors() {
-            const totalMachines = DATA.reduce((acc, s) => acc + s.machines.length, 0);
-            const totalComponents = DATA.reduce((acc, s) => 
-                acc + s.machines.reduce((a, m) => a + m.components.length, 0), 0);
-
+        function renderCategories() {
             let html = `
                 <div class="screen-header">
-                    <h2>Endüstriyel Sektörler</h2>
-                    <p>Bir sektör seçerek makineleri ve komponentleri keşfedin</p>
+                    <h2>Endüstriyel Komponent Gezgini</h2>
+                    <p>Bir kategori seçerek keşfe başlayın</p>
+                </div>
+                <div class="card-grid">
+            `;
+
+            DATA.categories.forEach(cat => {
+                // İstatistik hesapla
+                let machineCount = 0;
+                let componentCount = 0;
+                let sectorCount = 0;
+
+                if (cat.type === "with-sectors" && cat.sectors) {
+                    sectorCount = cat.sectors.length;
+                    cat.sectors.forEach(s => {
+                        machineCount += s.machines.length;
+                        s.machines.forEach(m => { componentCount += m.components.length; });
+                    });
+                } else if (cat.machines) {
+                    machineCount = cat.machines.length;
+                    cat.machines.forEach(m => { componentCount += m.components.length; });
+                }
+
+                const clickAction = cat.type === "with-sectors"
+                    ? `navigateTo('sectors', '${cat.id}')`
+                    : `navigateTo('machines', '${cat.id}')`;
+
+                let metaHtml = '';
+                if (sectorCount > 0) {
+                    metaHtml += `
+                        <div class="card-meta-item">
+                            <span class="meta-icon">🏢</span>
+                            ${sectorCount} Sektör
+                        </div>
+                    `;
+                }
+                metaHtml += `
+                    <div class="card-meta-item">
+                        <span class="meta-icon">🔧</span>
+                        ${machineCount} Makine
+                    </div>
+                `;
+
+                html += `
+                    <div class="card" onclick="${clickAction}">
+                        <div class="card-icon sector">${cat.icon}</div>
+                        <div class="card-title">${cat.name}</div>
+                        <div class="card-subtitle">${cat.description}</div>
+                        <div class="card-meta">
+                            ${metaHtml}
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            contentEl.innerHTML = html;
+            requestAnimationFrame(() => animateCards('.card'));
+        }
+
+        // ============================================
+        // EKRAN 2: SEKTÖRLER
+        // (Sadece "Sektörlere Has" kategorisi için)
+        // ============================================
+        function renderSectors(catId) {
+            const cat = getCategory(catId);
+            if (!cat || !cat.sectors) return;
+
+            let html = `
+                <button class="back-btn-mobile" onclick="navigateTo('categories')">
+                    ← Ana Sayfaya Dön
+                </button>
+                <div class="screen-header">
+                    <h2>${cat.icon} ${cat.name}</h2>
+                    <p>${cat.description}</p>
                     <div class="count-badge">
-                        📊 ${DATA.length} Sektör · ${totalMachines} Makine · ${totalComponents} Komponent
+                        🏢 ${cat.sectors.length} Sektör
                     </div>
                 </div>
                 <div class="card-grid">
             `;
 
-            DATA.forEach(sector => {
+            cat.sectors.forEach(sector => {
                 const machineCount = sector.machines.length;
                 const componentCount = sector.machines.reduce((a, m) => a + m.components.length, 0);
 
                 html += `
-                    <div class="card" onclick="navigateTo('machines', '${sector.id}')">
+                    <div class="card" onclick="navigateTo('machines', '${catId}', '${sector.id}')">
                         <div class="card-icon sector">${sector.icon}</div>
                         <div class="card-title">${sector.name}</div>
                         <div class="card-subtitle">${sector.description}</div>
@@ -917,51 +1048,67 @@
 
             html += `</div>`;
             contentEl.innerHTML = html;
-
             requestAnimationFrame(() => animateCards('.card'));
         }
 
         // ============================================
-        // EKRAN 2: MAKİNELER
+        // EKRAN 3: MAKİNELER
         // ============================================
-        function renderMachines(sectorId) {
-            const sector = DATA.find(s => s.id === sectorId);
+        function renderMachines(catId, sectorId) {
+            const cat = getCategory(catId);
+            if (!cat) return;
 
-            if (!sector) {
-                contentEl.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">🔍</div>
-                        <h3>Sektör bulunamadı</h3>
-                        <p>Lütfen geçerli bir sektör seçin.</p>
-                    </div>
-                `;
-                return;
+            let machines = [];
+            let parentName = "";
+            let parentIcon = "";
+            let parentDesc = "";
+            let backAction = "";
+
+            if (cat.type === "with-sectors" && sectorId) {
+                // Sektör altındaki makineler
+                const sector = getSector(catId, sectorId);
+                if (!sector) return;
+                machines = sector.machines;
+                parentName = sector.name;
+                parentIcon = sector.icon;
+                parentDesc = sector.description;
+                backAction = `navigateTo('sectors', '${catId}')`;
+            } else {
+                // Standartlar: doğrudan kategori altındaki makineler
+                machines = cat.machines || [];
+                parentName = cat.name;
+                parentIcon = cat.icon;
+                parentDesc = cat.description;
+                backAction = `navigateTo('categories')`;
             }
 
             let html = `
-                <button class="back-btn-mobile" onclick="navigateTo('sectors')">
-                    ← Sektörlere Dön
+                <button class="back-btn-mobile" onclick="${backAction}">
+                    ← Geri Dön
                 </button>
                 <div class="screen-header">
-                    <h2>${sector.icon} ${sector.name}</h2>
-                    <p>${sector.description}</p>
+                    <h2>${parentIcon} ${parentName}</h2>
+                    <p>${parentDesc}</p>
                     <div class="count-badge">
-                        🔧 ${sector.machines.length} Makine
+                        🔧 ${machines.length} Makine
                     </div>
                 </div>
                 <div class="card-grid">
             `;
 
-            sector.machines.forEach(machine => {
+            machines.forEach(machine => {
+                const compCount = machine.components.length;
+                const compLabel = compCount > 0 ? `${compCount} Komponent` : "Henüz komponent yok";
+
                 html += `
-                    <div class="card" onclick="navigateTo('components', '${sectorId}', '${machine.id}')">
+                    <div class="card" onclick="navigateTo('components', '${catId}', '${sectorId || ''}', '${machine.id}')">
                         <div class="card-icon machine">${machine.icon}</div>
                         <div class="card-title">${machine.name}</div>
                         <div class="card-subtitle">${machine.description}</div>
                         <div class="card-meta">
                             <div class="card-meta-item">
                                 <span class="meta-icon">📦</span>
-                                ${machine.components.length} Komponent
+                                ${compLabel}
                             </div>
                         </div>
                         <span class="card-arrow">→</span>
@@ -971,27 +1118,55 @@
 
             html += `</div>`;
             contentEl.innerHTML = html;
-
             requestAnimationFrame(() => animateCards('.card'));
         }
 
         // ============================================
-        // EKRAN 3: KOMPONENTLER
+        // EKRAN 4: KOMPONENTLER
         // ============================================
-        function renderComponents(sectorId, machineId) {
-            const sector = DATA.find(s => s.id === sectorId);
-            if (!sector) return;
-
-            const machine = sector.machines.find(m => m.id === machineId);
+        function renderComponents(catId, sectorId, machineId) {
+            const machine = getMachine(catId, sectorId || null, machineId);
             if (!machine) return;
 
+            const cat = getCategory(catId);
+            let backAction = "";
+            let parentLabel = "";
+
+            if (sectorId) {
+                const sector = getSector(catId, sectorId);
+                backAction = `navigateTo('machines', '${catId}', '${sectorId}')`;
+                parentLabel = sector ? sector.name : "";
+            } else {
+                backAction = `navigateTo('machines', '${catId}')`;
+                parentLabel = cat ? cat.name : "";
+            }
+
+            if (machine.components.length === 0) {
+                let html = `
+                    <button class="back-btn-mobile" onclick="${backAction}">
+                        ← Geri Dön
+                    </button>
+                    <div class="screen-header">
+                        <h2>${machine.icon} ${machine.name}</h2>
+                        <p>${parentLabel} — Komponent listesi</p>
+                    </div>
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <h3>Henüz komponent eklenmemiş</h3>
+                        <p>Bu makineye ait komponentler yakında eklenecektir.</p>
+                    </div>
+                `;
+                contentEl.innerHTML = html;
+                return;
+            }
+
             let html = `
-                <button class="back-btn-mobile" onclick="navigateTo('machines', '${sectorId}')">
-                    ← ${sector.name}'e Dön
+                <button class="back-btn-mobile" onclick="${backAction}">
+                    ← Geri Dön
                 </button>
                 <div class="screen-header">
                     <h2>${machine.icon} ${machine.name}</h2>
-                    <p>${sector.name} — Komponent listesi</p>
+                    <p>${parentLabel} — Komponent listesi</p>
                     <div class="count-badge">
                         📦 ${machine.components.length} Komponent
                     </div>
@@ -1014,40 +1189,49 @@
 
             html += `</div>`;
             contentEl.innerHTML = html;
-
             requestAnimationFrame(() => animateComponents('.component-item'));
         }
 
         // ============================================
         // NAVİGASYON
         // ============================================
-        function navigateTo(view, sectorId, machineId) {
+        function navigateTo(view, catId, sectorId, machineId) {
             state.currentView = view;
 
             switch (view) {
-                case "sectors":
+                case "categories":
+                    state.selectedCategory = null;
                     state.selectedSector = null;
                     state.selectedMachine = null;
                     renderBreadcrumb();
-                    renderSectors();
+                    renderCategories();
+                    break;
+
+                case "sectors":
+                    state.selectedCategory = catId;
+                    state.selectedSector = null;
+                    state.selectedMachine = null;
+                    renderBreadcrumb();
+                    renderSectors(catId);
                     break;
 
                 case "machines":
-                    state.selectedSector = sectorId;
+                    state.selectedCategory = catId;
+                    state.selectedSector = sectorId || null;
                     state.selectedMachine = null;
                     renderBreadcrumb();
-                    renderMachines(sectorId);
+                    renderMachines(catId, sectorId || null);
                     break;
 
                 case "components":
-                    state.selectedSector = sectorId;
+                    state.selectedCategory = catId;
+                    state.selectedSector = sectorId || null;
                     state.selectedMachine = machineId;
                     renderBreadcrumb();
-                    renderComponents(sectorId, machineId);
+                    renderComponents(catId, sectorId || null, machineId);
                     break;
             }
 
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1056,10 +1240,22 @@
         // ============================================
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' || e.key === 'Backspace') {
-                if (state.currentView === 'components' && state.selectedSector) {
-                    navigateTo('machines', state.selectedSector);
-                } else if (state.currentView === 'machines') {
-                    navigateTo('sectors');
+                const v = state.currentView;
+                if (v === 'components') {
+                    if (state.selectedSector) {
+                        navigateTo('machines', state.selectedCategory, state.selectedSector);
+                    } else {
+                        navigateTo('machines', state.selectedCategory);
+                    }
+                } else if (v === 'machines') {
+                    const cat = getCategory(state.selectedCategory);
+                    if (cat && cat.type === 'with-sectors') {
+                        navigateTo('sectors', state.selectedCategory);
+                    } else {
+                        navigateTo('categories');
+                    }
+                } else if (v === 'sectors') {
+                    navigateTo('categories');
                 }
             }
         });
@@ -1067,7 +1263,7 @@
         // ============================================
         // UYGULAMAYI BAŞLAT
         // ============================================
-        navigateTo("sectors");
+        navigateTo("categories");
     </script>
 </body>
 </html>
