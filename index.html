@@ -699,8 +699,8 @@
         const DATA = {
             categories: [
                 {
-                    id: "sektorlere-has",
-                    name: "Sektörlere Has",
+                    id: "sektorlere-ozel-makineler",
+                    name: "Sektörlere Özel Makineler",
                     icon: "🏭",
                     description: "Sektöre özel makine ve komponentler",
                     type: "with-sectors",
@@ -839,7 +839,7 @@
         }
 
         function getMachine(catId, sectorId, machineId) {
-            // "Sektörlere Has" → sektör altında makine
+            // "Sektörlere Özel Makineler" → sektör altında makine
             if (sectorId) {
                 const sector = getSector(catId, sectorId);
                 return sector ? sector.machines.find(m => m.id === machineId) : null;
@@ -883,7 +883,7 @@
                 }
             }
 
-            // 3) Sektör adı (sadece "Sektörlere Has" için)
+            // 3) Sektör adı (sadece "Sektörlere Özel Makineler" için)
             if (state.selectedSector && state.selectedCategory) {
                 const sector = getSector(state.selectedCategory, state.selectedSector);
                 if (sector) {
@@ -1002,7 +1002,7 @@
 
         // ============================================
         // EKRAN 2: SEKTÖRLER
-        // (Sadece "Sektörlere Has" kategorisi için)
+        // (Sadece "Sektörlere Özel Makineler" kategorisi için)
         // ============================================
         function renderSectors(catId) {
             const cat = getCategory(catId);
