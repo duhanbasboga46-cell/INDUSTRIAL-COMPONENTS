@@ -897,6 +897,329 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            id: "cnc-talas-tahliye-depolama",
+                            name: "CNC Talaş Tahliye ve Depolama Sistemleri",
+                            icon: "🔩",
+                            description: "CNC ve metal işleme tezgahlarından çıkan talaşların tahliyesi, taşınması ve depolanması",
+                            machines: [
+                                {
+                                    id: "celik-paletli-konveyor",
+                                    name: "Çelik Paletli Konveyör",
+                                    icon: "⛓️",
+                                    description: "Her türlü talaş tipinde sorunsuz çalışan en yaygın konveyör çeşidi",
+                                    components: [
+                                        { name: "Çelik Palet Zinciri", type: "Taşıma Elemanı" },
+                                        { name: "Redüktörlü Motor", type: "Tahrik Sistemi" },
+                                        { name: "Gövde (Kanal)", type: "Yapısal Eleman" },
+                                        { name: "Soğutma Sıvısı Tankı", type: "Depolama" },
+                                        { name: "Pompa", type: "Sıvı Transfer" },
+                                        { name: "Seviye Sensörü", type: "Sensör" }
+                                    ]
+                                },
+                                {
+                                    id: "kaucuk-bantli-konveyor",
+                                    name: "Kauçuk Bantlı Konveyör",
+                                    icon: "🏭",
+                                    description: "Talaşsız imalat, kağıt, gıda, tekstil ve plastik sektörlerinde malzeme taşıma",
+                                    components: [
+                                        { name: "Kauçuk Bant", type: "Taşıma Elemanı" },
+                                        { name: "Tahrik Tamburu", type: "Tahrik Sistemi" },
+                                        { name: "Gergi Tamburu", type: "Gergi Sistemi" },
+                                        { name: "Taşıyıcı Roleler", type: "Destek Elemanı" },
+                                        { name: "Redüktörlü Motor", type: "Güç İletim" },
+                                        { name: "Şase", type: "Yapısal Eleman" }
+                                    ]
+                                },
+                                {
+                                    id: "manyetik-konveyor",
+                                    name: "Manyetik Konveyör",
+                                    icon: "🧲",
+                                    description: "Küçük ve ince magnetik metal parçacıkların mıknatıslarla taşınması",
+                                    components: [
+                                        { name: "Mıknatıs Bloğu", type: "Taşıma Elemanı" },
+                                        { name: "Paslanmaz Saç Yüzey", type: "Yapısal Eleman" },
+                                        { name: "Tahrik Ünitesi", type: "Tahrik Sistemi" },
+                                        { name: "Sıyırıcı", type: "Temizleme Elemanı" },
+                                        { name: "Gövde", type: "Yapısal Eleman" }
+                                    ]
+                                },
+                                {
+                                    id: "kazimali-paletli-konveyor",
+                                    name: "Kazımalı (Paletli) Konveyör",
+                                    icon: "🔧",
+                                    description: "Pirinç, döküm, alüminyum gibi kırık ve toz talaşların kazınarak tahliyesi",
+                                    components: [
+                                        { name: "Kazıma Paleti", type: "Taşıma Elemanı" },
+                                        { name: "Zincir Sistemi", type: "Hareket İletim" },
+                                        { name: "Gövde Tabanı", type: "Yapısal Eleman" },
+                                        { name: "Redüktörlü Motor", type: "Tahrik Sistemi" },
+                                        { name: "Talaş Çıkış Ağzı", type: "Çıkış Elemanı" }
+                                    ]
+                                },
+                                {
+                                    id: "cift-bantli-dram-konveyor",
+                                    name: "Çift Bantlı Dram Konveyör",
+                                    icon: "🥁",
+                                    description: "Entegre dram filtre ve çift bant ile hassas soğutma sıvısı süzme",
+                                    components: [
+                                        { name: "Dram (Tambur) Filtre", type: "Filtrasyon Elemanı" },
+                                        { name: "Çift Bant Sistemi", type: "Taşıma Elemanı" },
+                                        { name: "Filtrasyon Hazinesi", type: "Depolama" },
+                                        { name: "Temiz Sıvı Pompası", type: "Sıvı Transfer" },
+                                        { name: "Redüktörlü Motor", type: "Tahrik Sistemi" }
+                                    ]
+                                },
+                                {
+                                    id: "hurda-konveyoru",
+                                    name: "Hurda Konveyörü",
+                                    icon: "♻️",
+                                    description: "Pres tezgahlarından çıkan ince veya keskin metal hurdaların taşınması",
+                                    components: [
+                                        { name: "Özel Menteşeli Palet", type: "Taşıma Elemanı" },
+                                        { name: "Yanak Yapısı", type: "Koruma Elemanı" },
+                                        { name: "Ağır Hizmet Zinciri", type: "Hareket İletim" },
+                                        { name: "Redüktörlü Motor", type: "Tahrik Sistemi" },
+                                        { name: "Şase", type: "Yapısal Eleman" }
+                                    ]
+                                },
+                                {
+                                    id: "sicak-parca-tasima-konveyoru",
+                                    name: "Sıcak Parça Taşıma Konveyörü",
+                                    icon: "🔥",
+                                    description: "900–1250 °C arası yüksek sıcaklıktaki parçaların deformasyonsuz nakli",
+                                    components: [
+                                        { name: "Isıya Dayanıklı Palet", type: "Taşıma Elemanı" },
+                                        { name: "Isı Kalkanı", type: "Koruma Elemanı" },
+                                        { name: "Ağır Hizmet Zinciri", type: "Hareket İletim" },
+                                        { name: "Soğutma Sistemi", type: "Termal Yönetim" },
+                                        { name: "Redüktörlü Motor", type: "Tahrik Sistemi" },
+                                        { name: "Yüksek Sıcaklık Sensörü", type: "Sensör" }
+                                    ]
+                                },
+                                {
+                                    id: "helezon-konveyor",
+                                    name: "Helezon Konveyör",
+                                    icon: "🌀",
+                                    description: "Toz, granül ve talaş gibi küçük taneli malzemelerin kapalı sistemde taşınması",
+                                    components: [
+                                        { name: "Helezon Mili", type: "Taşıma Elemanı" },
+                                        { name: "Tüp/Oluk Gövde", type: "Yapısal Eleman" },
+                                        { name: "Yatak Takımları", type: "Destek Elemanı" },
+                                        { name: "Redüktörlü Motor", type: "Tahrik Sistemi" },
+                                        { name: "Giriş/Çıkış Ağzı", type: "Bağlantı Elemanı" }
+                                    ]
+                                },
+                                {
+                                    id: "talas-arabasi",
+                                    name: "Talaş Arabası",
+                                    icon: "🛒",
+                                    description: "Konveyör çıkışlarına yerleştirilen frenli ve devrilme mekanizmalı metal toplama arabası",
+                                    components: [
+                                        { name: "Çelik Kasa", type: "Yapısal Eleman" },
+                                        { name: "Frenli Tekerlekler", type: "Hareket Elemanı" },
+                                        { name: "Devrilme Mekanizması", type: "Mekanik Sistem" },
+                                        { name: "Sıvı Tahliye Vanası", type: "Sıvı Yönetim" },
+                                        { name: "Forklift Cebi", type: "Taşıma Aparatı" }
+                                    ]
+                                },
+                                {
+                                    id: "talas-silosu",
+                                    name: "Talaş Silosu",
+                                    icon: "🏗️",
+                                    description: "Talaşların yüksek kapasitede biriktirilmesi ve hidrolik boşaltma ile aktarılması",
+                                    components: [
+                                        { name: "Silo Gövdesi", type: "Yapısal Eleman" },
+                                        { name: "Hidrolik Boşaltma Kapağı", type: "Mekanik Sistem" },
+                                        { name: "Seviye Sensörü", type: "Sensör" },
+                                        { name: "Giriş Konveyörü", type: "Taşıma Elemanı" },
+                                        { name: "Kontrol Panosu", type: "Elektrik/Otomasyon" }
+                                    ]
+                                },
+                                {
+                                    id: "hidrolik-asansor",
+                                    name: "Hidrolik Talaş Yükleme/Boşaltma Asansörü",
+                                    icon: "⬆️",
+                                    description: "Talaş arabalarını hidrolik sistemle kaldırıp devirerek silolara boşaltma",
+                                    components: [
+                                        { name: "Hidrolik Silindir", type: "Tahrik Sistemi" },
+                                        { name: "Hidrolik Güç Ünitesi", type: "Güç Kaynağı" },
+                                        { name: "Platform", type: "Yapısal Eleman" },
+                                        { name: "Emniyet Kilidi", type: "Güvenlik Elemanı" },
+                                        { name: "Kontrol Panosu", type: "Elektrik/Otomasyon" }
+                                    ]
+                                },
+                                {
+                                    id: "zincirli-asansor",
+                                    name: "Zincirli Talaş Yükleme/Boşaltma Asansörü",
+                                    icon: "⛓️",
+                                    description: "Ağır talaş arabalarının zincir tahrik ile güvenli yükleme/boşaltma",
+                                    components: [
+                                        { name: "Zincir Tahrik Sistemi", type: "Hareket İletim" },
+                                        { name: "Kaldırma Platformu", type: "Yapısal Eleman" },
+                                        { name: "Redüktörlü Motor", type: "Tahrik Sistemi" },
+                                        { name: "Emniyet Freni", type: "Güvenlik Elemanı" },
+                                        { name: "Kontrol Panosu", type: "Elektrik/Otomasyon" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: "cnc-sogutma-sivisi-filtrasyon-sistemleri",
+                            name: "CNC Soğutma Sıvısı Filtrasyon Sistemleri",
+                            icon: "🔬",
+                            description: "Soğutma sıvılarının mikro seviyede temizlenmesi ve geri kazanımı",
+                            machines: [
+                                {
+                                    id: "duz-bant-filtre",
+                                    name: "Düz Bant Filtre",
+                                    icon: "📄",
+                                    description: "Rulo kağıt filtre ile soğutma sıvılarını mikro seviyede temizleyen otomatik sistem",
+                                    components: [
+                                        { name: "Rulo Kağıt Filtre", type: "Filtrasyon Elemanı" },
+                                        { name: "Bant Tahrik Sistemi", type: "Tahrik Sistemi" },
+                                        { name: "Kirli Sıvı Havuzu", type: "Depolama" },
+                                        { name: "Temiz Sıvı Hazinesi", type: "Depolama" },
+                                        { name: "Seviye Şalteri", type: "Sensör" },
+                                        { name: "Pompa", type: "Sıvı Transfer" }
+                                    ]
+                                },
+                                {
+                                    id: "derin-bant-filtre",
+                                    name: "Derin Bant Filtre",
+                                    icon: "📐",
+                                    description: "Yüksek sıvı sütunu basıncı ile filtre ömrünü uzatan derin yataklı tasarım",
+                                    components: [
+                                        { name: "Derin Yatak Hazine", type: "Yapısal Eleman" },
+                                        { name: "Rulo Kağıt Filtre", type: "Filtrasyon Elemanı" },
+                                        { name: "Otomatik İlerleme Sistemi", type: "Otomasyon" },
+                                        { name: "Kirli Sıvı Girişi", type: "Bağlantı Elemanı" },
+                                        { name: "Temiz Sıvı Çıkışı", type: "Bağlantı Elemanı" },
+                                        { name: "Pompa", type: "Sıvı Transfer" }
+                                    ]
+                                },
+                                {
+                                    id: "manyetik-unite",
+                                    name: "Manyetik Ünite",
+                                    icon: "🧲",
+                                    description: "Demir esaslı parçacıkları mıknatıslı tambur ile yakalayan ön filtrasyon ünitesi",
+                                    components: [
+                                        { name: "Manyetik Tambur", type: "Filtrasyon Elemanı" },
+                                        { name: "Sıyırıcı Bıçak", type: "Temizleme Elemanı" },
+                                        { name: "Gövde", type: "Yapısal Eleman" },
+                                        { name: "Tahrik Motoru", type: "Tahrik Sistemi" },
+                                        { name: "Talaş Toplama Kanalı", type: "Çıkış Elemanı" }
+                                    ]
+                                },
+                                {
+                                    id: "merkezi-filtrasyon",
+                                    name: "Merkezi Filtrasyon",
+                                    icon: "🏭",
+                                    description: "Tüm CNC tezgahlarının soğutma sıvılarını tek merkezde arıtan tesis çözümü",
+                                    components: [
+                                        { name: "Merkezi Filtre Ünitesi", type: "Filtrasyon Elemanı" },
+                                        { name: "Toplama Boruları", type: "Sıvı İletim" },
+                                        { name: "Ana Pompa İstasyonu", type: "Sıvı Transfer" },
+                                        { name: "Dağıtım Manifoldu", type: "Sıvı İletim" },
+                                        { name: "Otomasyon Panosu", type: "Elektrik/Otomasyon" },
+                                        { name: "Temiz Sıvı Tankı", type: "Depolama" }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: "talas-donusum-sistemleri",
+                            name: "Talaş Dönüşüm Sistemleri",
+                            icon: "♻️",
+                            description: "Talaşların öğütülmesi, kırılması, kurutulması ve geri dönüşüm sistemleri",
+                            machines: [
+                                {
+                                    id: "tek-saft-ogutucu",
+                                    name: "Tek Şaftlı Metal Talaş Öğütücü",
+                                    icon: "⚙️",
+                                    description: "Tek şaftlı yapı ile metal talaşlarını parçalayan kompakt öğütücü",
+                                    components: [
+                                        { name: "Tek Şaft Rotoru", type: "Kesme Elemanı" },
+                                        { name: "Sabit Bıçaklar", type: "Kesme Elemanı" },
+                                        { name: "Elek (Screen)", type: "Boyut Kontrol" },
+                                        { name: "Hidrolik Ünite", type: "Güç Kaynağı" },
+                                        { name: "Gövde", type: "Yapısal Eleman" },
+                                        { name: "Kontrol Panosu", type: "Elektrik/Otomasyon" }
+                                    ]
+                                },
+                                {
+                                    id: "cift-saft-ogutucu",
+                                    name: "Çift Şaftlı Metal Talaş Öğütücü",
+                                    icon: "⚙️",
+                                    description: "Zıt dönen bıçaklarla talaş hacmini %15'e kadar küçülten planet redüktörlü öğütücü",
+                                    components: [
+                                        { name: "Çift Şaft Rotoru", type: "Kesme Elemanı" },
+                                        { name: "Zıt Dönen Bıçaklar", type: "Kesme Elemanı" },
+                                        { name: "Planet Redüktör", type: "Güç İletim" },
+                                        { name: "Elektrik Motoru", type: "Tahrik Sistemi" },
+                                        { name: "Gövde", type: "Yapısal Eleman" },
+                                        { name: "Kontrol Panosu", type: "Elektrik/Otomasyon" }
+                                    ]
+                                },
+                                {
+                                    id: "dikey-kirici",
+                                    name: "Dikey Kırıcılar",
+                                    icon: "🔨",
+                                    description: "Sarmal ve uzun talaşları homojen boyutlarda kıran otomatik çene açmalı dikey sistem",
+                                    components: [
+                                        { name: "Kırıcı Çeneler", type: "Kesme Elemanı" },
+                                        { name: "Otomatik Çene Açma Mekanizması", type: "Güvenlik Sistemi" },
+                                        { name: "Dikey Gövde", type: "Yapısal Eleman" },
+                                        { name: "Redüktörlü Motor", type: "Tahrik Sistemi" },
+                                        { name: "Talaş Giriş Hunisi", type: "Bağlantı Elemanı" },
+                                        { name: "Kontrol Panosu", type: "Elektrik/Otomasyon" }
+                                    ]
+                                },
+                                {
+                                    id: "dikey-santrifuj",
+                                    name: "Dikey Santrifüj",
+                                    icon: "🌀",
+                                    description: "Islak talaşlardaki kesme/bor yağını yüksek devirde sıkarak geri kazanan dikey model",
+                                    components: [
+                                        { name: "Dikey Tambur", type: "Döner Eleman" },
+                                        { name: "Filtre Sepeti", type: "Filtrasyon Elemanı" },
+                                        { name: "Ana Motor", type: "Tahrik Sistemi" },
+                                        { name: "Hava Üfleme Hattı", type: "Pnömatik Sistem" },
+                                        { name: "Yağ Toplama Haznesi", type: "Sıvı Geri Kazanım" },
+                                        { name: "Kontrol Panosu", type: "Elektrik/Otomasyon" }
+                                    ]
+                                },
+                                {
+                                    id: "yatay-santrifuj",
+                                    name: "Yatay Santrifüj",
+                                    icon: "🌀",
+                                    description: "Konik tambur ile yüksek G kuvveti üreterek yağı tam ayrıştıran yüksek kapasiteli model",
+                                    components: [
+                                        { name: "Yatay Konik Tambur", type: "Döner Eleman" },
+                                        { name: "Helezon Konveyör (İç)", type: "Taşıma Elemanı" },
+                                        { name: "Ana Motor", type: "Tahrik Sistemi" },
+                                        { name: "Diferansiyel Redüktör", type: "Güç İletim" },
+                                        { name: "Yağ Toplama Haznesi", type: "Sıvı Geri Kazanım" },
+                                        { name: "Kontrol Panosu", type: "Elektrik/Otomasyon" }
+                                    ]
+                                },
+                                {
+                                    id: "sistem-cozumleri",
+                                    name: "Entegre Sistem Çözümleri",
+                                    icon: "🔗",
+                                    description: "Talaş kırma, kurutma, yağ geri kazanımı ve depolama içeren anahtar teslim tesis projeleri",
+                                    components: [
+                                        { name: "Talaş Kırma Ünitesi", type: "Dönüşüm Sistemi" },
+                                        { name: "Kurutma Ünitesi (Santrifüj)", type: "Dönüşüm Sistemi" },
+                                        { name: "Yağ Geri Kazanım Sistemi", type: "Sıvı Geri Kazanım" },
+                                        { name: "Asansörlü Yükleme Sistemi", type: "Taşıma Sistemi" },
+                                        { name: "Depolama Silosu", type: "Depolama" },
+                                        { name: "Merkezi Otomasyon Panosu", type: "Elektrik/Otomasyon" },
+                                        { name: "SCADA Sistemi", type: "Yazılım/İzleme" }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
