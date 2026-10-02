@@ -392,6 +392,67 @@
         }
 
         /* ========================================
+           CARD IMAGE
+           ======================================== */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 18px;
+            position: relative;
+            background: var(--gray-100);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-image-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 10px;
+            background: rgba(10, 22, 40, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 100px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .card.has-image {
+            padding: 16px;
+        }
+
+        .card.has-image .card-icon {
+            display: none;
+        }
+
+        .card.has-image .card-title {
+            padding: 0 8px;
+        }
+
+        .card.has-image .card-subtitle {
+            padding: 0 8px;
+        }
+
+        .card.has-image .card-meta {
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        /* ========================================
            COMPONENT LIST
            ======================================== */
         .component-list {
@@ -937,6 +998,7 @@
                                     name: "Manyetik Konveyör",
                                     icon: "🧲",
                                     description: "Küçük ve ince magnetik metal parçacıkların mıknatıslarla taşınması",
+                                    image: "./images/manyetik-konveyor-1-1-1500x844.jpg",
                                     components: [
                                         { name: "Mıknatıs Bloğu", type: "Taşıma Elemanı" },
                                         { name: "Paslanmaz Saç Yüzey", type: "Yapısal Eleman" },
@@ -1540,9 +1602,21 @@
             machines.forEach(machine => {
                 const compCount = machine.components.length;
                 const compLabel = compCount > 0 ? `${compCount} Komponent` : "Henüz komponent yok";
+                const hasImage = !!machine.image;
+
+                let imageHtml = '';
+                if (hasImage) {
+                    imageHtml = `
+                        <div class="card-image">
+                            <img src="${machine.image}" alt="${machine.name}" loading="lazy" />
+                            <div class="card-image-badge">📷 Görsel</div>
+                        </div>
+                    `;
+                }
 
                 html += `
-                    <div class="card" onclick="navigateTo('components', '${catId}', '${sectorId || ''}', '${machine.id}')">
+                    <div class="card ${hasImage ? 'has-image' : ''}" onclick="navigateTo('components', '${catId}', '${sectorId || ''}', '${machine.id}')">
+                        ${imageHtml}
                         <div class="card-icon machine">${machine.icon}</div>
                         <div class="card-title">${machine.name}</div>
                         <div class="card-subtitle">${machine.description}</div>
